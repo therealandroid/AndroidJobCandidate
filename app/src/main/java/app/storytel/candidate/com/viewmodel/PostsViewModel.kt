@@ -17,7 +17,6 @@ class PostsViewModel(private var repository: IPostsRepository) : ViewModel() {
 
     private var completableJob: Job? = null
 
-    //Loadings
     val loadingPostsLiveData: MutableLiveData<Boolean> = MutableLiveData()
     val errorPostsLoadingLiveData: MutableLiveData<Boolean> = MutableLiveData()
     val loadingCommentsLiveData: MutableLiveData<Boolean> = MutableLiveData()
@@ -25,9 +24,7 @@ class PostsViewModel(private var repository: IPostsRepository) : ViewModel() {
     val getCommentsLiveData: MutableLiveData<MutableList<Comment>> = MutableLiveData()
 
     fun getPosts() {
-        if(!getPostsLiveData.value.isNullOrEmpty()){
-//            getPostsLiveData.postValue(getPostsLiveData.value)
-        }else{
+        if(getPostsLiveData.value.isNullOrEmpty()){
             loadingPostsLiveData.postValue(true)
             errorPostsLoadingLiveData.postValue(false)
 

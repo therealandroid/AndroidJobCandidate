@@ -66,18 +66,15 @@ class PostDetailsFragment : Fragment() {
         })
 
         postsViewModel.getCommentsLiveData.observe(requireActivity(), Observer {
-            setupData(it)
+            setupAdapter(it)
         })
     }
 
-    private fun setupData(comments: MutableList<Comment>) {
-        title1.text = comments[0].name
-        description1.text = comments[0].body
-        title2.text = comments[1].name
-        description2.text = comments[1].body
-        title3.text = comments[2].name
-        description3.text = comments[2].body
-
+    private fun setupAdapter(comments: MutableList<Comment>) {
+        val adapter = CommentsAdapter()
+        adapter.setData(comments)
+        recyclerPostsDetail.adapter = adapter
+        adapter.notifyDataSetChanged()
     }
 }
 
