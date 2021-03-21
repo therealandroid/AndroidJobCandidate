@@ -12,6 +12,8 @@ import androidx.navigation.ui.setupWithNavController
 import app.storytel.candidate.com.R
 import app.storytel.candidate.com.model.Post
 import app.storytel.candidate.com.viewmodel.PostsViewModel
+import kotlinx.android.synthetic.main.empty_view_layout.*
+import kotlinx.android.synthetic.main.empty_view_layout.view.*
 import kotlinx.android.synthetic.main.fragment_posts.*
 import org.koin.android.ext.android.inject
 
@@ -26,6 +28,7 @@ class PostsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initLiveDataObservers()
+        initListeners()
         setupToolbar()
     }
 
@@ -37,6 +40,12 @@ class PostsFragment : Fragment() {
 
     private fun loadPostsInitial(){
         postsViewModel.getPosts()
+    }
+
+    private fun initListeners(){
+        empty_view_retry_button.setOnClickListener {
+            loadPostsInitial()
+        }
     }
 
     private fun initLiveDataObservers() {
@@ -52,7 +61,10 @@ class PostsFragment : Fragment() {
 
         postsViewModel.errorPostsLoadingLiveData.observe(viewLifecycleOwner,
                 Observer { hasError ->
-
+                    if (hasError)
+                        error_view.visibility = View.VISIBLE
+                    else
+                        error_view.visibility = View.GONE
                 })
 
         loadPostsInitial()
