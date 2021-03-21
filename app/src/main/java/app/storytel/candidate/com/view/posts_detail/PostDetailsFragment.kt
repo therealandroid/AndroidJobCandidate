@@ -16,9 +16,6 @@ import app.storytel.candidate.com.model.Comment
 import app.storytel.candidate.com.shared.extensions.loadImageAsync
 import app.storytel.candidate.com.viewmodel.PostsViewModel
 import kotlinx.android.synthetic.main.fragment_post_details.*
-import kotlinx.android.synthetic.main.fragment_post_details.loading
-import kotlinx.android.synthetic.main.fragment_post_details.toolbar
-import kotlinx.android.synthetic.main.fragment_posts.*
 import org.koin.android.ext.android.inject
 
 class PostDetailsFragment : Fragment() {
