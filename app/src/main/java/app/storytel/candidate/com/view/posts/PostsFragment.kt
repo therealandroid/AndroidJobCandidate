@@ -12,9 +12,8 @@ import app.storytel.candidate.com.R
 class PostsFragment : Fragment() {
     //removing static URLs and passed them to the appropriate modue
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.activity_scrolling, container, false)
+        return inflater.inflate(R.layout.fragment_posts, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
