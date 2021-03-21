@@ -16,6 +16,9 @@ import app.storytel.candidate.com.model.Comment
 import app.storytel.candidate.com.shared.extensions.loadImageAsync
 import app.storytel.candidate.com.viewmodel.PostsViewModel
 import kotlinx.android.synthetic.main.fragment_post_details.*
+import kotlinx.android.synthetic.main.fragment_post_details.loading
+import kotlinx.android.synthetic.main.fragment_post_details.toolbar
+import kotlinx.android.synthetic.main.fragment_posts.*
 import org.koin.android.ext.android.inject
 
 class PostDetailsFragment : Fragment() {
@@ -66,18 +69,15 @@ class PostDetailsFragment : Fragment() {
         })
 
         postsViewModel.getCommentsLiveData.observe(requireActivity(), Observer {
-            setupData(it)
+            setupAdapter(it)
         })
     }
 
-    private fun setupData(comments: MutableList<Comment>) {
-        title1.text = comments[0].name
-        description1.text = comments[0].body
-        title2.text = comments[1].name
-        description2.text = comments[1].body
-        title3.text = comments[2].name
-        description3.text = comments[2].body
-
+    private fun setupAdapter(comments: MutableList<Comment>) {
+        val adapter = CommentsAdapter()
+        adapter.setData(comments)
+        recyclerPostsDetail.adapter = adapter
+        adapter.notifyDataSetChanged()
     }
 }
 
