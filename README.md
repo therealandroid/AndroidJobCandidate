@@ -1,3 +1,6 @@
+![Android CI](https://github.com/therealandroid/AndroidJobCandidate/workflows/Android%20CI/badge.svg)
+
+
 # Android Job Candidate
 
 ### Task Description
