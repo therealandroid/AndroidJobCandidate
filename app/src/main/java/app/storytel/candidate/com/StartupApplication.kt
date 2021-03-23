@@ -9,6 +9,7 @@ class StartupApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        //Init Koin injections
         startKoin {
             androidContext(this@StartupApplication)
             modules(

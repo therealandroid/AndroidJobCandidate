@@ -54,15 +54,15 @@ class PostsFragment : Fragment() {
         })
 
         postsViewModel.loadingPostsLiveData.observe(viewLifecycleOwner, { isLoading ->
-            loading.visibility = if (isLoading) View.VISIBLE else View.GONE
-            recyclerPosts.visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
+            loading?.visibility = if (isLoading) View.VISIBLE else View.GONE
+            recyclerPosts?.visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
         })
 
         postsViewModel.errorPostsLoadingLiveData.observe(viewLifecycleOwner, { hasError ->
             if (hasError)
-                error_view.visibility = View.VISIBLE
+                error_view?.visibility = View.VISIBLE
             else
-                error_view.visibility = View.GONE
+                error_view?.visibility = View.GONE
         })
 
         loadPostsInitial()
@@ -71,7 +71,7 @@ class PostsFragment : Fragment() {
     private fun setupAdapter(posts: MutableList<Post>) {
         val adapter = PostAdapter()
         adapter.setData(posts)
-        recyclerPosts.adapter = adapter
+        recyclerPosts?.adapter = adapter
         adapter.notifyDataSetChanged()
     }
 

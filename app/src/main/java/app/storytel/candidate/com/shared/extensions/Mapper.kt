@@ -6,6 +6,7 @@ import app.storytel.candidate.com.model.Post
 import com.storytel.network.dto.CommentDto
 import com.storytel.network.dto.PostAndPhotoDto
 
+//This exntesions is a helper for mapping objects from network to our app module
 fun PostAndPhotoDto.toModel(): Post {
     val post = Post()
     post.id = this.post.id

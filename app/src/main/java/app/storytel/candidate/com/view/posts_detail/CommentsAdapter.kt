@@ -33,7 +33,6 @@ class CommentsAdapter : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>(
         fun bind(comment: Comment) {
             itemView.comment_title.text = comment.name
             itemView.comment_description.text = comment.body
-
         }
     }
 
