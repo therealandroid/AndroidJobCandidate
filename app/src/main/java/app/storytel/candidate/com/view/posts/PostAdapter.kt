@@ -3,11 +3,15 @@ package app.storytel.candidate.com.view.posts
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import app.storytel.candidate.com.BuildConfig
 import app.storytel.candidate.com.R
 import app.storytel.candidate.com.model.Post
+import app.storytel.candidate.com.shared.extensions.loadImageAsync
 import app.storytel.candidate.com.view.posts.PostAdapter.PostViewHolder
-
+import app.storytel.candidate.com.view.posts_detail.PostDetailsFragment
+import kotlinx.android.synthetic.main.post_item.view.*
 
 class PostAdapter : RecyclerView.Adapter<PostViewHolder>() {
     private var posts: MutableList<Post> = mutableListOf()
@@ -31,6 +35,15 @@ class PostAdapter : RecyclerView.Adapter<PostViewHolder>() {
 
     inner class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(post: Post) {
+            itemView.title.text = post.title
+            itemView.body.text = post.body
+            itemView.image.loadImageAsync(post.photo?.url)
+
+            itemView.setOnClickListener {
+                val directions = PostsFragmentDirections.toPostDetailFragment(post)
+                Navigation.findNavController(itemView).navigate(directions)
+            }
+
         }
     }
 

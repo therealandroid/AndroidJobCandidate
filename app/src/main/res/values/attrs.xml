@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EmptyView">
+        <attr name="emptyViewIcon" format="reference"/>
+        <attr name="emptyViewTitle" format="string"/>
+        <attr name="emptyViewDescription" format="string"/>
+        <attr name="emptyViewButtonText" format="string"/>
+    </declare-styleable>
+</resources>

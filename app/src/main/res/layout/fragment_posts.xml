@@ -40,8 +40,24 @@
         android:layout_gravity="center"
         android:visibility="gone" />
 
-    <include layout="@layout/content_scrolling" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerPosts"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/default_margin"
+        android:visibility="gone"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+    <app.storytel.candidate.com.shared.components.EmptyView
+        android:id="@+id/error_view"
+        android:visibility="gone"
+        app:emptyViewIcon="@drawable/ic_baseline_wifi_off_24"
+        app:emptyViewButtonText="Retry"
+        app:emptyViewTitle="No internet connection"
+        app:emptyViewDescription="Click in the button bellow to retry"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
