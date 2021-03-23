@@ -1,5 +1,11 @@
 ![Android CI](https://github.com/therealandroid/AndroidJobCandidate/workflows/Android%20CI/badge.svg)
 
+### Releases
+`version: 1.0.1`
+
+[![1.0.1](https://img.shields.io/badge/stability-stable-green.svg)](https://github.com/therealandroid/AndroidJobCandidate/releases)
+
+
 
 # Android Job Candidate
 
