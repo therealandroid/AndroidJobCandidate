@@ -18,4 +18,21 @@ This means that we expect that the app is stable and performs well in all possib
 
 *At the interview we expect you to walk us through the code and explain what you have done.*
 
+### Documentation
 
+[Wiki](https://github.com/therealandroid/AndroidJobCandidate/wiki)
+
+### Project management
+
+[Kanban](https://github.com/therealandroid/AndroidJobCandidate/projects/1)
+
+Sprint 1: [kotlin-refactor](https://github.com/therealandroid/AndroidJobCandidate/milestone/1)
+
+Sprint 2: [testing](https://github.com/therealandroid/AndroidJobCandidate/milestone/2)
+
+### To implement in the future:
+
+Add **DataBinding** to the project - it will make the project cleaner and more readable.
+
+- For more information check [issue#3](https://github.com/therealandroid/AndroidJobCandidate/issues/3)
+- Add more test coverage
