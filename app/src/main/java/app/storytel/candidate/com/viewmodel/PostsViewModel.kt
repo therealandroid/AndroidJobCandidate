@@ -6,9 +6,9 @@ import androidx.lifecycle.viewModelScope
 import app.storytel.candidate.com.model.Comment
 import app.storytel.candidate.com.model.Post
 import app.storytel.candidate.com.shared.Constants
-
 import app.storytel.candidate.com.shared.extensions.toModel
 import com.storytel.network.repository.IPostsRepository
+
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 

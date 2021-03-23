@@ -32,40 +32,38 @@ class PostsFragment : Fragment() {
         setupToolbar()
     }
 
-    private fun setupToolbar(){
+    private fun setupToolbar() {
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 
-    private fun loadPostsInitial(){
+    private fun loadPostsInitial() {
         postsViewModel.getPosts()
     }
 
-    private fun initListeners(){
+    private fun initListeners() {
         empty_view_retry_button.setOnClickListener {
             loadPostsInitial()
         }
     }
 
     private fun initLiveDataObservers() {
-        postsViewModel.getPostsLiveData.observe(viewLifecycleOwner,
-                Observer { posts ->
-                    setupAdapter(posts)
-                })
+        postsViewModel.getPostsLiveData.observe(viewLifecycleOwner, { posts ->
+            setupAdapter(posts)
+        })
 
-        postsViewModel.loadingPostsLiveData.observe(viewLifecycleOwner,
-                Observer { isLoading ->
-                    loading.visibility = if (isLoading) View.VISIBLE else View.GONE
-                })
+        postsViewModel.loadingPostsLiveData.observe(viewLifecycleOwner, { isLoading ->
+            loading.visibility = if (isLoading) View.VISIBLE else View.GONE
+            recyclerPosts.visibility = if (isLoading) View.INVISIBLE else View.VISIBLE
+        })
 
-        postsViewModel.errorPostsLoadingLiveData.observe(viewLifecycleOwner,
-                Observer { hasError ->
-                    if (hasError)
-                        error_view.visibility = View.VISIBLE
-                    else
-                        error_view.visibility = View.GONE
-                })
+        postsViewModel.errorPostsLoadingLiveData.observe(viewLifecycleOwner, { hasError ->
+            if (hasError)
+                error_view.visibility = View.VISIBLE
+            else
+                error_view.visibility = View.GONE
+        })
 
         loadPostsInitial()
     }

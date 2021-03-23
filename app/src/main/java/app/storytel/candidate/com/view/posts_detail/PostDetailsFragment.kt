@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
@@ -16,6 +16,7 @@ import app.storytel.candidate.com.model.Comment
 import app.storytel.candidate.com.shared.extensions.loadImageAsync
 import app.storytel.candidate.com.viewmodel.PostsViewModel
 import kotlinx.android.synthetic.main.fragment_post_details.*
+
 import org.koin.android.ext.android.inject
 
 class PostDetailsFragment : Fragment() {
@@ -46,7 +47,7 @@ class PostDetailsFragment : Fragment() {
     private fun setupToolbar() {
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
-        toolbar.setupWithNavController(navController, appBarConfiguration)
+        toolbarPostDetail.setupWithNavController(navController, appBarConfiguration)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -61,11 +62,11 @@ class PostDetailsFragment : Fragment() {
     fun loadComments(postId: Int) {
         postsViewModel.getComments(postId)
 
-        postsViewModel.loadingCommentsLiveData.observe(requireActivity(), Observer { isLoading ->
-            loading.visibility = if (isLoading) View.VISIBLE else View.GONE
+        postsViewModel.loadingCommentsLiveData.observe(requireActivity(), { isLoading ->
+            commentsLoading?.visibility = if (isLoading) View.VISIBLE else View.GONE
         })
 
-        postsViewModel.getCommentsLiveData.observe(requireActivity(), Observer {
+        postsViewModel.getCommentsLiveData.observe(requireActivity(), {
             setupAdapter(it)
         })
     }
