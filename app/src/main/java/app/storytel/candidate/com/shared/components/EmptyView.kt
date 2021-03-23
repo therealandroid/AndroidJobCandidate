@@ -9,6 +9,11 @@ import app.storytel.candidate.com.R
 import kotlinx.android.synthetic.main.empty_view_layout.view.*
 
 
+/**
+ * This view is a custom view,
+ * modify it's parameter direct from the styles
+ * Check attrs.xml for more information
+ */
 class EmptyView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
     init {
