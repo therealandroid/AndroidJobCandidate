@@ -10,6 +10,7 @@ import org.koin.dsl.module
 
 //dependencies for app module
 val appModule = module {
+
     single<IPostsRepository> { PostsRepository(get()) }
     viewModel { PostsViewModel(get()) }
 }
